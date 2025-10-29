@@ -156,13 +156,11 @@ public class Rectangle
     {
         if (other == null) return false;
         
-        // Границы текущего прямоугольника
         double left1 = pointA.X;
         double right1 = pointA.X + sideA;
         double bottom1 = pointA.Y;
         double top1 = pointA.Y + sideB;
         
-        // Границы другого прямоугольника
         double left2 = other.pointA.X;
         double right2 = other.pointA.X + other.sideA;
         double bottom2 = other.pointA.Y;
@@ -200,13 +198,12 @@ public class Rectangle
         return hasPositive && hasNegative;
     }
 
-    // Дополнительные служебные методы
+    // Доп служебные методы
     public Point GetPointA() => new Point(pointA.X, pointA.Y);
     public double GetSideA() => sideA;
     public double GetSideB() => sideB;
 }
 
-// Класс для демонстрации работы
 class Program
 {
     static void Main(string[] args)
@@ -227,39 +224,39 @@ class Program
             
             Console.WriteLine("\n--- тестирование методов ---");
             
-            Console.WriteLine($"Площадь: {rect2.GetArea():F2}");
+            Console.WriteLine($"площадь: {rect2.GetArea():F2}");
             
-            Console.WriteLine($"Радиус описанной окружности: {rect2.GetCircumscribedRadius():F2}");
+            Console.WriteLine($"радиус описанной окружности: {rect2.GetCircumscribedRadius():F2}");
             
-            Console.WriteLine($"Является квадратом: {(rect2.IsSquare() ? "Да" : "Нет")}");
+            Console.WriteLine($"является квадратом: {(rect2.IsSquare() ? "yes" : "no")}");
             
-            Console.Write("Введите число для умножения размеров: ");
+            Console.Write("input number for mult: ");
             double multiplier = Convert.ToDouble(Console.ReadLine());
             Rectangle multipliedRect = rect2.MultiplyByNumber(multiplier);
-            Console.WriteLine("Результат умножения:");
+            Console.WriteLine("result mult:");
             multipliedRect.Output();
             
            
-            Console.WriteLine($"расположен в первой четверти: {(rect2.IsInFirstQuadrant() ? "Да" : "Нет")}");
+            Console.WriteLine($"расположен в первой четверти: {(rect2.IsInFirstQuadrant() ? "yes" : "no")}");
             
 
             Console.WriteLine("\nвведите данные второго прямоугольника для проверки пересечения:");
             Rectangle rect3 = new Rectangle();
             rect3.Input();
             
-            Console.WriteLine($"Прямоугольники пересекаются: {(rect2.IntersectsWith(rect3) ? "Да" : "Нет")}");
-            Console.WriteLine($"Прямоугольники равны: {(rect2.Equals(rect3) ? "Да" : "Нет")}");
+            Console.WriteLine($"прямоугольники пересекаются: {(rect2.IntersectsWith(rect3) ? "yes" : "no")}");
+            Console.WriteLine($"прямоугольники равны: {(rect2.Equals(rect3) ? "yes" : "no")}");
             
     
-            Console.WriteLine("\nПроверка пересечения с прямой ax + by + c = 0:");
-            Console.Write("Введите коэффициент a: ");
+            Console.WriteLine("\nпроверка пересечения с прямой ax + by + c = 0:");
+            Console.Write("введите коэффициент a: ");
             double a = Convert.ToDouble(Console.ReadLine());
-            Console.Write("Введите коэффициент b: ");
+            Console.Write("введите коэффициент b: ");
             double b = Convert.ToDouble(Console.ReadLine());
-            Console.Write("Введите коэффициент c: ");
+            Console.Write("введите коэффициент c: ");
             double c = Convert.ToDouble(Console.ReadLine());
             
-            Console.WriteLine($"Прямая пересекает прямоугольник: {(rect2.IntersectsWithLine(a, b, c) ? "Да" : "Нет")}");
+            Console.WriteLine($"Прямая пересекает прямоугольник: {(rect2.IntersectsWithLine(a, b, c) ? "yes" : "no")}");
         }
         catch (Exception ex)
         {
