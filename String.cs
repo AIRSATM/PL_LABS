@@ -21,13 +21,11 @@ class Program
         
         Console.WriteLine("=извлечение подстрок=");
         
-        // Первая подстрока: с начала строки
         int length1 = Math.Max(2, sourceString.Length / 4); // минимум 2 символа
         string substring1 = sourceString.Substring(0, length1);
         Console.WriteLine($"подстрока 1: извлекаем с позиции 0, длина {length1}");
         Console.WriteLine($"результат: \"{substring1}\"");
         
-        // Вторая подстрока: из середины строки
         int startPos2 = sourceString.Length / 3;
         int length2 = Math.Max(1, sourceString.Length / 3);
         // Убеждаемся, что не выходим за границы строки
@@ -39,7 +37,6 @@ class Program
         Console.WriteLine($"подстрока 2: извлекаем с позиции {startPos2}, длина {length2}");
         Console.WriteLine($"результат: \"{substring2}\"");
         
-        // Третья подстрока: с конца строки
         int length3 = Math.Max(3, sourceString.Length / 5); // минимум 3 символа
         int startPos3 = Math.Max(0, sourceString.Length - length3);
         string substring3 = sourceString.Substring(startPos3);
@@ -48,7 +45,6 @@ class Program
         
         Console.WriteLine();
         
-        // Анализируем длины подстрок
         Console.WriteLine("=анализ длин подстрок=");
         Console.WriteLine($"длина подстроки 1: {substring1.Length} символов");
         Console.WriteLine($"длина подстроки 2: {substring2.Length} символов");
@@ -60,7 +56,6 @@ class Program
         
         Console.WriteLine("=сортировка по длине=");
         
-        // Создаем массив индексов для отслеживания первоначального порядка
         var indexedSubstrings = substrings
             .Select((str, index) => new { 
                 Text = str, 
@@ -83,7 +78,6 @@ class Program
         Console.WriteLine();
         Console.WriteLine("=доп.информация=");
         
-        // Находим самую короткую и самую длинную подстроки
         var shortest = indexedSubstrings.First();
         var longest = indexedSubstrings.Last();
         
@@ -92,7 +86,6 @@ class Program
         Console.WriteLine($"самая длинная подстрока: \"{longest.Text}\" " +
                          $"({longest.Length} символов)");
         
-        // Проверяем на одинаковые длины
         var groupsByLength = indexedSubstrings.GroupBy(x => x.Length).ToArray();
         if (groupsByLength.Any(g => g.Count() > 1))
         {
