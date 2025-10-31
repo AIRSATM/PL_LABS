@@ -21,24 +21,21 @@ class Program
         
         Console.WriteLine("=извлечение подстрок=");
         
-        int length1 = Math.Max(2, input.Length / 4); // минимум 2 символа
+        int partSize = input.Length / 3;
+        int remainder = input.Length % 3;
+        
+        int length1 = partSize + (remainder > 0 ? 1 : 0);
         string substring1 = input.Substring(0, length1);
         Console.WriteLine($"подстрока 1: извлекаем с позиции 0, длина {length1}");
         Console.WriteLine($"результат: \"{substring1}\"");
         
-        int startPos2 = input.Length / 3;
-        int length2 = Math.Max(1, input.Length / 3);
-        // проверяем чтобы не вылезти за конец строки
-        if (startPos2 + length2 > input.Length)
-        {
-            length2 = input.Length - startPos2;
-        }
+        int startPos2 = length1;
+        int length2 = partSize + (remainder > 1 ? 1 : 0);
         string substring2 = input.Substring(startPos2, length2);
         Console.WriteLine($"подстрока 2: извлекаем с позиции {startPos2}, длина {length2}");
         Console.WriteLine($"результат: \"{substring2}\"");
         
-        int length3 = Math.Max(3, input.Length / 5); // минимум 3 символа
-        int startPos3 = Math.Max(0, input.Length - length3);
+        int startPos3 = startPos2 + length2;
         string substring3 = input.Substring(startPos3);
         Console.WriteLine($"подстрока 3: извлекаем с позиции {startPos3} до конца");
         Console.WriteLine($"результат: \"{substring3}\"");
