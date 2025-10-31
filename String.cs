@@ -8,7 +8,7 @@ class Program
         Console.Write("введите строку(минимум 10 символов): ");
         string sourceString = Console.ReadLine();
         
-        if (string.IsNullOrEmpty(sourceString) || sourceString.Length < 6)
+        if (string.IsNullOrEmpty(sourceString) || sourceString.Length < 10)
         {
             Console.WriteLine("строка короткая");
             Console.WriteLine();
